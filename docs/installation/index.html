@@ -1,0 +1,466 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta http-equiv="content-type" content="text/html; charset=utf-8">
+
+    <!-- Enable responsiveness on mobile devices-->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
+
+    <title>
+Установка | Dashboard для OpenVPN
+</title>
+
+    <link rel="canonical" href="https:&#x2F;&#x2F;docs.dfov.ru">
+
+    
+<meta name="Description" content="Как установить приложение Dashboard for OpenVPN">
+
+
+    
+
+<meta name="keywords" content="Документация к Dashboard for OpenVPN, Dashboard for OpenVPN, документация">
+
+
+
+    
+    <meta property="og:title" content="Dashboard для OpenVPN" />
+    
+
+    
+<meta property="og:description" content="Как установить приложение Dashboard for OpenVPN"/>
+
+
+    
+<meta property="og:url" content="/installation&#x2F;" />
+
+
+    
+    <meta property="og:type" content="article" />
+    
+
+    
+
+    
+
+
+
+    <link rel="icon" type="image&#x2F;x-icon" href="/favicon.ico">
+
+    
+    
+
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&family=Montserrat:wght@700;800&display=swap"
+          rel="stylesheet">
+
+    <!-- CSS -->
+    
+    <link rel="stylesheet" href="https://docs.dfov.ru/style.css">
+    
+
+    
+    
+</head>
+
+<body>
+    <div class="menu">
+        
+        <div class="menu__header">
+            <div class="menu__header__kind text-color-secondary">
+                ДОКУМЕНТАЦИЯ
+            </div>
+            <h2>Dashboard для OpenVPN</h2>
+
+            
+            <div style="margin-top: 20px; margin-bottom: 10px">
+                <a href="https:&#x2F;&#x2F;dfov.ru" target="_blank" title="Перейти на сайт"
+                   class="menu__header__site-link">Сайт</a>
+            </div>
+            
+        </div>
+
+        
+        <nav role="navigation">
+            <ul>
+                
+                    
+                    
+                        
+                        <li>
+                            
+                            <a href="https:&#x2F;&#x2F;docs.dfov.ru&#x2F;intro&#x2F;"
+                               
+                               class="font-weight-bold"
+                            >
+                                <strong>1.</strong>
+                                Введение
+                            </a>
+                            
+                        </li>
+                    
+                        
+                        <li>
+                            
+                            <a href="https:&#x2F;&#x2F;docs.dfov.ru&#x2F;installation&#x2F;"
+                               class="active"
+                               
+                            >
+                                <strong>2.</strong>
+                                Установка
+                            </a>
+                            
+                        </li>
+                    
+                        
+                        <li>
+                            
+                            <a href="https:&#x2F;&#x2F;docs.dfov.ru&#x2F;configuration&#x2F;"
+                               
+                               class="font-weight-bold"
+                            >
+                                <strong>3.</strong>
+                                Настройка
+                            </a>
+                            
+                                <ul>
+                                    
+                                        <li >
+                                            <a href="https:&#x2F;&#x2F;docs.dfov.ru&#x2F;configuration&#x2F;web-config&#x2F;">
+                                                <strong>3.1.</strong>
+                                                Настройка через Web-интерфейс
+                                            </a>
+                                        </li>
+                                    
+                                        <li >
+                                            <a href="https:&#x2F;&#x2F;docs.dfov.ru&#x2F;configuration&#x2F;app-port&#x2F;">
+                                                <strong>3.2.</strong>
+                                                Настройка порта приложения
+                                            </a>
+                                        </li>
+                                    
+                                        <li >
+                                            <a href="https:&#x2F;&#x2F;docs.dfov.ru&#x2F;configuration&#x2F;proxy-with-nginx&#x2F;">
+                                                <strong>3.3.</strong>
+                                                Проксирование через Nginx
+                                            </a>
+                                        </li>
+                                    
+                                </ul>
+                            
+                        </li>
+                    
+                        
+                        <li>
+                            
+                            <a href="https:&#x2F;&#x2F;docs.dfov.ru&#x2F;manage-users&#x2F;"
+                               
+                               class="font-weight-bold"
+                            >
+                                <strong>4.</strong>
+                                Управление пользователями
+                            </a>
+                            
+                                <ul>
+                                    
+                                        <li >
+                                            <a href="https:&#x2F;&#x2F;docs.dfov.ru&#x2F;manage-users&#x2F;create-users&#x2F;">
+                                                <strong>4.1.</strong>
+                                                Создание пользователей
+                                            </a>
+                                        </li>
+                                    
+                                        <li >
+                                            <a href="https:&#x2F;&#x2F;docs.dfov.ru&#x2F;manage-users&#x2F;create-ovpn&#x2F;">
+                                                <strong>4.2.</strong>
+                                                Как создать профиль подключения
+                                            </a>
+                                        </li>
+                                    
+                                        <li >
+                                            <a href="https:&#x2F;&#x2F;docs.dfov.ru&#x2F;manage-users&#x2F;block-users&#x2F;">
+                                                <strong>4.3.</strong>
+                                                Блокировка пользователей
+                                            </a>
+                                        </li>
+                                    
+                                        <li >
+                                            <a href="https:&#x2F;&#x2F;docs.dfov.ru&#x2F;manage-users&#x2F;unlock-users&#x2F;">
+                                                <strong>4.4.</strong>
+                                                Разблокировка пользователей
+                                            </a>
+                                        </li>
+                                    
+                                        <li >
+                                            <a href="https:&#x2F;&#x2F;docs.dfov.ru&#x2F;manage-users&#x2F;new-credentials&#x2F;">
+                                                <strong>4.5.</strong>
+                                                Перевыпуск сертификата и ключа пользователя
+                                            </a>
+                                        </li>
+                                    
+                                        <li >
+                                            <a href="https:&#x2F;&#x2F;docs.dfov.ru&#x2F;manage-users&#x2F;import-users&#x2F;">
+                                                <strong>4.6.</strong>
+                                                Импорт пользователей
+                                            </a>
+                                        </li>
+                                    
+                                </ul>
+                            
+                        </li>
+                    
+                        
+                        <li>
+                            
+                            <a href="https:&#x2F;&#x2F;docs.dfov.ru&#x2F;openvpn&#x2F;"
+                               
+                               class="font-weight-bold"
+                            >
+                                <strong>5.</strong>
+                                OpenVPN
+                            </a>
+                            
+                                <ul>
+                                    
+                                        <li >
+                                            <a href="https:&#x2F;&#x2F;docs.dfov.ru&#x2F;openvpn&#x2F;config-ovpn-client&#x2F;">
+                                                <strong>5.1.</strong>
+                                                Настройка OpenVPN-клиента
+                                            </a>
+                                        </li>
+                                    
+                                        <li >
+                                            <a href="https:&#x2F;&#x2F;docs.dfov.ru&#x2F;openvpn&#x2F;install-openvpn-server-centos7&#x2F;">
+                                                <strong>5.2.</strong>
+                                                Установка и настройка OpenVPN сервера для CentOS 7
+                                            </a>
+                                        </li>
+                                    
+                                </ul>
+                            
+                        </li>
+                    
+                        
+                        <li>
+                            
+                            <a href="https:&#x2F;&#x2F;docs.dfov.ru&#x2F;troubleshooting&#x2F;"
+                               
+                               class="font-weight-bold"
+                            >
+                                <strong>6.</strong>
+                                Решение проблем
+                            </a>
+                            
+                        </li>
+                    
+                
+            </ul>
+        </nav>
+        
+        
+    </div>
+
+    <div class="page">
+        <div class="page__header">
+            <div class="menu-icon">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </div>
+
+        <div class="page__content">
+            <div class="book-content">
+                
+    <h1>Установка</h1>
+    <p>Перед установкой приложения у вас должен быть установлен OpenVPN-сервер. Руководства по установке OpenVPN-сервера 
+для разных операционных систем:</p>
+<ol>
+<li><a href="/openvpn/install-openvpn-server-centos7">CentOS 7</a></li>
+<li><a href="https://www.digitalocean.com/community/tutorials/how-to-set-up-an-openvpn-server-on-ubuntu-18-04">Ubuntu 18.04</a> (на английском)</li>
+</ol>
+<h3 id="tekhnicheskie-trebovaniia">Технические требования</h3>
+<ul>
+<li>Популярный дистрибутив Linux: CentOS, RHEL, Ubuntu, ArchLinux и т. п.</li>
+<li>Easy RSA 3.x (как установить будет рассказано в данном руководстве)</li>
+<li>Java 8</li>
+</ul>
+<h3 id="1-ustanavlivaem-zavisimosti">1. Устанавливаем зависимости</h3>
+<p><strong>CentOS</strong></p>
+<pre style="background-color:#2b303b;">
+<span style="color:#c0c5ce;">yum -y install java-1.8.0 wget</span><span style="color:#c0c5ce;">
+</span></pre>
+<p><strong>Ubuntu/Debian</strong></p>
+<pre style="background-color:#2b303b;">
+<span style="color:#c0c5ce;">apt update</span><span style="color:#c0c5ce;">
+apt install openjdk-8-jre</span><span style="color:#c0c5ce;">
+</span></pre><h3 id="2-raspakovyvaem-distributiv">2. Распаковываем дистрибутив</h3>
+<pre style="background-color:#2b303b;">
+<span style="color:#c0c5ce;">unzip dfov-x.x.x.zip -d /opt/dfov</span><span style="color:#c0c5ce;">
+</span></pre><h3 id="3-podgotavlivaem-fail-konfiguratsii-i-ispolniaemyi-fail">3. Подготавливаем файл конфигурации и исполняемый файл</h3>
+<pre style="background-color:#2b303b;">
+<span style="color:#c0c5ce;">cd /opt/dfov</span><span style="color:#c0c5ce;">
+cp application.properties-dist application.properties</span><span style="color:#c0c5ce;">
+ln -s dfov-X.X.X dfov.jar</span><span style="color:#c0c5ce;">
+</span></pre>
+<p>Вместо <code>X.X.X</code> должна быть версия приложения которую вы устанавливаете.</p>
+<h3 id="4-nastraivaem-konfiguratsiiu-openvpn-servera">4. Настраиваем конфигурацию OpenVPN сервера</h3>
+<p>Чтобы OpenVPN вёл реестр действующих и отозванных сертификатов, необходимо включить опцию <code>crl-verify</code>.
+Также потребуется активировать интерфейс управления.</p>
+<p>Добавляем в <code>/etc/openvpn/server.conf</code> строчки:</p>
+<pre style="background-color:#2b303b;">
+<span style="color:#c0c5ce;">crl-verify /etc/openvpn/easy-rsa/pki/crl.pem</span><span style="color:#c0c5ce;">
+</span><span style="color:#c0c5ce;">
+management localhost 7501</span><span style="color:#c0c5ce;">
+</span></pre>
+<p>Далее генерируем crl-файл:</p>
+<pre style="background-color:#2b303b;">
+<span style="color:#c0c5ce;">$ cd /etc/openvpn/easy-rsa</span><span style="color:#c0c5ce;">
+$ ./easyrsa gen-crl</span><span style="color:#c0c5ce;">
+</span></pre>
+<p>обновляем права:</p>
+<pre style="background-color:#2b303b;">
+<span style="color:#c0c5ce;">chown -R openvpn: /etc/openvpn</span><span style="color:#c0c5ce;">
+chmod o+r /etc/openvpn/easy-rsa/pki/crl.pem</span><span style="color:#c0c5ce;">
+</span></pre>
+<p>Рестартуем сервер:</p>
+<pre style="background-color:#2b303b;">
+<span style="color:#c0c5ce;">systemctl restart openvpn@server</span><span style="color:#c0c5ce;">
+</span></pre><h3 id="5-podgotavlivaem-fail-servisa-dlia-systemd">5. Подготавливаем файл сервиса для systemd</h3>
+<pre style="background-color:#2b303b;">
+<span style="color:#c0c5ce;">cd /opt/dfov</span><span style="color:#c0c5ce;">
+cp files/dfov.service /etc/systemd/system/</span><span style="color:#c0c5ce;">
+systemctl daemon-reload</span><span style="color:#c0c5ce;">
+systemctl enable dfov</span><span style="color:#c0c5ce;">
+</span></pre><h3 id="6-daiom-dopolnitel-nye-prava-pol-zovateliu-openvpn">6. Даём дополнительные права пользователю openvpn</h3>
+<p>Приложение работает от имени пользователя <code>openvpn</code>.
+Чтобы приложение могло управлять службой OpenVPN и читать информацию для проверки лицензии потребуется дать дополнительные права в системе.
+Последнее правило позволяет пользователю openvpn читать серийный номер материнской платы сервера, он необходим
+чтобы сгенерировать уникальный серверный ключ.</p>
+<p>Для этого запускаем <code>visudo</code> и добавляем строчки:</p>
+<pre style="background-color:#2b303b;">
+<span style="color:#c0c5ce;">openvpn ALL=NOPASSWD: /usr/bin/systemctl start openvpn@server</span><span style="color:#c0c5ce;">
+openvpn ALL=NOPASSWD: /usr/bin/systemctl stop openvpn@server</span><span style="color:#c0c5ce;">
+openvpn ALL=NOPASSWD: /usr/bin/systemctl status openvpn@server</span><span style="color:#c0c5ce;">
+openvpn ALL=NOPASSWD: /usr/bin/cat /sys/devices/virtual/dmi/id/board_serial</span><span style="color:#c0c5ce;">
+</span></pre><h3 id="7-delaem-bazovuiu-nastroiku-application-properties">7. Делаем базовую настройку (application.properties)</h3>
+<p>В файле конфигурации <code>application.properties</code> указываем:</p>
+<ul>
+<li><code>superadmin.password</code> - пароль для пользователя <code>superadmin</code> для входа в приложение.</li>
+<li><code>management.endpoints.web.cors.allowed-origins=http://vpn.yourcompany.ru</code> - указываем адрес с которого разрешены 
+запросы к приложению. Например, <code>https://server</code>.</li>
+</ul>
+<p>Остальные настройки будут работать для большинства инсталляций. 
+Примеры настроек с комментариями хранятся в файле-примере - <code>application.properties-dist</code>, который поставляется в составе дистрибутива приложения.</p>
+<p><strong>Указываем путь к ключу для TLS (опционально)</strong></p>
+<p>Если вы используете TLS, то необходимо указать путь к ключу:</p>
+<pre style="background-color:#2b303b;">
+<span style="color:#c0c5ce;">openvpn.tls-auth-key=</span><span style="color:#a3be8c;">/etc/openvpn/ta.key</span><span style="color:#c0c5ce;">
+</span></pre><h3 id="8-zapuskaem-prilozhenie">8. Запускаем приложение</h3>
+<pre style="background-color:#2b303b;">
+<span style="color:#c0c5ce;">chown -R openvpn: /opt/dfov</span><span style="color:#c0c5ce;">
+</span><span style="color:#c0c5ce;">
+systemctl enable dfov</span><span style="color:#c0c5ce;">
+systemctl start dfov</span><span style="color:#c0c5ce;">
+</span></pre>
+<p>Открываем в браузере адрес <code>https://адрес-сервера:8080</code> и входим под пользователем <code>superadmin</code>.</p>
+<h3 id="ustanovka-litsenzionnogo-kliucha-optsional-no">Установка лицензионного ключа (опционально)</h3>
+<p>Если у вас лицензионная версия, то для установки ключа необходимо зайти в Web-интерфейс приложения, страницу <code>Настройки</code>,
+вкладка <code>Разное</code>. </p>
+
+
+            </div>
+        </div>
+
+        <div class="prev-link">
+            
+    
+    
+    
+    
+        
+        
+            
+        
+    
+        
+        
+            
+        
+    
+        
+        
+            
+        
+    
+        
+        
+            
+        
+    
+        
+        
+            
+        
+    
+        
+        
+            
+                
+                    <a class="previous" href="https:&#x2F;&#x2F;docs.dfov.ru&#x2F;intro&#x2F;"><</a>
+                
+                
+                
+            
+        
+    
+
+        </div>
+
+        <div class="next-link">
+            
+    
+        
+        
+        
+        
+            
+            
+            
+        
+            
+            
+            
+                
+            
+        
+            
+            
+                <a class="next" href="https:&#x2F;&#x2F;docs.dfov.ru&#x2F;configuration&#x2F;">></a>
+                
+                
+            
+            
+        
+            
+            
+            
+        
+            
+            
+            
+        
+            
+            
+            
+        
+    
+
+        </div>
+    </div>
+
+    <script type="text/javascript" src="https://docs.dfov.ru/theme.js"></script>
+    
+
+
+</body>
+</html>

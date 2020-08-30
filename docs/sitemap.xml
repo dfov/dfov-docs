@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+    
+        <url>
+            <loc>https://docs.dfov.ru/</loc>
+            
+        </url>
+    
+        <url>
+            <loc>https://docs.dfov.ru/configuration/</loc>
+            
+        </url>
+    
+        <url>
+            <loc>https://docs.dfov.ru/configuration/app-port/</loc>
+            
+        </url>
+    
+        <url>
+            <loc>https://docs.dfov.ru/configuration/proxy-with-nginx/</loc>
+            
+        </url>
+    
+        <url>
+            <loc>https://docs.dfov.ru/configuration/web-config/</loc>
+            
+        </url>
+    
+        <url>
+            <loc>https://docs.dfov.ru/installation/</loc>
+            
+        </url>
+    
+        <url>
+            <loc>https://docs.dfov.ru/intro/</loc>
+            
+        </url>
+    
+        <url>
+            <loc>https://docs.dfov.ru/manage-users/</loc>
+            
+        </url>
+    
+        <url>
+            <loc>https://docs.dfov.ru/manage-users/block-users/</loc>
+            
+        </url>
+    
+        <url>
+            <loc>https://docs.dfov.ru/manage-users/create-ovpn/</loc>
+            
+        </url>
+    
+        <url>
+            <loc>https://docs.dfov.ru/manage-users/create-users/</loc>
+            
+        </url>
+    
+        <url>
+            <loc>https://docs.dfov.ru/manage-users/import-users/</loc>
+            
+        </url>
+    
+        <url>
+            <loc>https://docs.dfov.ru/manage-users/new-credentials/</loc>
+            
+        </url>
+    
+        <url>
+            <loc>https://docs.dfov.ru/manage-users/unlock-users/</loc>
+            
+        </url>
+    
+        <url>
+            <loc>https://docs.dfov.ru/openvpn/</loc>
+            
+        </url>
+    
+        <url>
+            <loc>https://docs.dfov.ru/openvpn/config-ovpn-client/</loc>
+            
+        </url>
+    
+        <url>
+            <loc>https://docs.dfov.ru/openvpn/install-openvpn-server-centos7/</loc>
+            
+        </url>
+    
+        <url>
+            <loc>https://docs.dfov.ru/troubleshooting/</loc>
+            
+        </url>
+    
+</urlset>

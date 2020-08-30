@@ -1,0 +1,319 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta http-equiv="content-type" content="text/html; charset=utf-8">
+
+    <!-- Enable responsiveness on mobile devices-->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
+
+    <title>
+Блокировка пользователей | Dashboard для OpenVPN
+</title>
+
+    <link rel="canonical" href="https:&#x2F;&#x2F;docs.dfov.ru">
+
+    
+<meta name="Description" content="Как заблокировать пользователя">
+
+
+    
+
+    <meta name="keywords" content="Документация к Dashboard for OpenVPN, Dashboard for OpenVPN, документация">
+
+
+
+    
+    <meta property="og:title" content="Dashboard для OpenVPN" />
+    
+
+    
+<meta property="og:description" content="Как заблокировать пользователя"/>
+
+
+    
+<meta property="og:url" content="/manage-users&#x2F;block-users&#x2F;" />
+
+
+    
+    <meta property="og:type" content="article" />
+    
+
+    
+
+    
+
+
+
+    <link rel="icon" type="image&#x2F;x-icon" href="/favicon.ico">
+
+    
+    
+
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&family=Montserrat:wght@700;800&display=swap"
+          rel="stylesheet">
+
+    <!-- CSS -->
+    
+    <link rel="stylesheet" href="https://docs.dfov.ru/style.css">
+    
+
+    
+    
+</head>
+
+<body>
+    <div class="menu">
+        
+        <div class="menu__header">
+            <div class="menu__header__kind text-color-secondary">
+                ДОКУМЕНТАЦИЯ
+            </div>
+            <h2>Dashboard для OpenVPN</h2>
+
+            
+            <div style="margin-top: 20px; margin-bottom: 10px">
+                <a href="https:&#x2F;&#x2F;dfov.ru" target="_blank" title="Перейти на сайт"
+                   class="menu__header__site-link">Сайт</a>
+            </div>
+            
+        </div>
+
+        
+        <nav role="navigation">
+            <ul>
+                
+                    
+                    
+                        
+                        <li>
+                            
+                            <a href="https:&#x2F;&#x2F;docs.dfov.ru&#x2F;intro&#x2F;"
+                               
+                               class="font-weight-bold"
+                            >
+                                <strong>1.</strong>
+                                Введение
+                            </a>
+                            
+                        </li>
+                    
+                        
+                        <li>
+                            
+                            <a href="https:&#x2F;&#x2F;docs.dfov.ru&#x2F;installation&#x2F;"
+                               
+                               class="font-weight-bold"
+                            >
+                                <strong>2.</strong>
+                                Установка
+                            </a>
+                            
+                        </li>
+                    
+                        
+                        <li>
+                            
+                            <a href="https:&#x2F;&#x2F;docs.dfov.ru&#x2F;configuration&#x2F;"
+                               
+                               class="font-weight-bold"
+                            >
+                                <strong>3.</strong>
+                                Настройка
+                            </a>
+                            
+                                <ul>
+                                    
+                                        <li >
+                                            <a href="https:&#x2F;&#x2F;docs.dfov.ru&#x2F;configuration&#x2F;web-config&#x2F;">
+                                                <strong>3.1.</strong>
+                                                Настройка через Web-интерфейс
+                                            </a>
+                                        </li>
+                                    
+                                        <li >
+                                            <a href="https:&#x2F;&#x2F;docs.dfov.ru&#x2F;configuration&#x2F;app-port&#x2F;">
+                                                <strong>3.2.</strong>
+                                                Настройка порта приложения
+                                            </a>
+                                        </li>
+                                    
+                                        <li >
+                                            <a href="https:&#x2F;&#x2F;docs.dfov.ru&#x2F;configuration&#x2F;proxy-with-nginx&#x2F;">
+                                                <strong>3.3.</strong>
+                                                Проксирование через Nginx
+                                            </a>
+                                        </li>
+                                    
+                                </ul>
+                            
+                        </li>
+                    
+                        
+                        <li>
+                            
+                            <a href="https:&#x2F;&#x2F;docs.dfov.ru&#x2F;manage-users&#x2F;"
+                               
+                               class="font-weight-bold"
+                            >
+                                <strong>4.</strong>
+                                Управление пользователями
+                            </a>
+                            
+                                <ul>
+                                    
+                                        <li >
+                                            <a href="https:&#x2F;&#x2F;docs.dfov.ru&#x2F;manage-users&#x2F;create-users&#x2F;">
+                                                <strong>4.1.</strong>
+                                                Создание пользователей
+                                            </a>
+                                        </li>
+                                    
+                                        <li >
+                                            <a href="https:&#x2F;&#x2F;docs.dfov.ru&#x2F;manage-users&#x2F;create-ovpn&#x2F;">
+                                                <strong>4.2.</strong>
+                                                Как создать профиль подключения
+                                            </a>
+                                        </li>
+                                    
+                                        <li class="active">
+                                            <a href="https:&#x2F;&#x2F;docs.dfov.ru&#x2F;manage-users&#x2F;block-users&#x2F;">
+                                                <strong>4.3.</strong>
+                                                Блокировка пользователей
+                                            </a>
+                                        </li>
+                                    
+                                        <li >
+                                            <a href="https:&#x2F;&#x2F;docs.dfov.ru&#x2F;manage-users&#x2F;unlock-users&#x2F;">
+                                                <strong>4.4.</strong>
+                                                Разблокировка пользователей
+                                            </a>
+                                        </li>
+                                    
+                                        <li >
+                                            <a href="https:&#x2F;&#x2F;docs.dfov.ru&#x2F;manage-users&#x2F;new-credentials&#x2F;">
+                                                <strong>4.5.</strong>
+                                                Перевыпуск сертификата и ключа пользователя
+                                            </a>
+                                        </li>
+                                    
+                                        <li >
+                                            <a href="https:&#x2F;&#x2F;docs.dfov.ru&#x2F;manage-users&#x2F;import-users&#x2F;">
+                                                <strong>4.6.</strong>
+                                                Импорт пользователей
+                                            </a>
+                                        </li>
+                                    
+                                </ul>
+                            
+                        </li>
+                    
+                        
+                        <li>
+                            
+                            <a href="https:&#x2F;&#x2F;docs.dfov.ru&#x2F;openvpn&#x2F;"
+                               
+                               class="font-weight-bold"
+                            >
+                                <strong>5.</strong>
+                                OpenVPN
+                            </a>
+                            
+                                <ul>
+                                    
+                                        <li >
+                                            <a href="https:&#x2F;&#x2F;docs.dfov.ru&#x2F;openvpn&#x2F;config-ovpn-client&#x2F;">
+                                                <strong>5.1.</strong>
+                                                Настройка OpenVPN-клиента
+                                            </a>
+                                        </li>
+                                    
+                                        <li >
+                                            <a href="https:&#x2F;&#x2F;docs.dfov.ru&#x2F;openvpn&#x2F;install-openvpn-server-centos7&#x2F;">
+                                                <strong>5.2.</strong>
+                                                Установка и настройка OpenVPN сервера для CentOS 7
+                                            </a>
+                                        </li>
+                                    
+                                </ul>
+                            
+                        </li>
+                    
+                        
+                        <li>
+                            
+                            <a href="https:&#x2F;&#x2F;docs.dfov.ru&#x2F;troubleshooting&#x2F;"
+                               
+                               class="font-weight-bold"
+                            >
+                                <strong>6.</strong>
+                                Решение проблем
+                            </a>
+                            
+                        </li>
+                    
+                
+            </ul>
+        </nav>
+        
+        
+    </div>
+
+    <div class="page">
+        <div class="page__header">
+            <div class="menu-icon">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </div>
+
+        <div class="page__content">
+            <div class="book-content">
+                
+    <h1 class="page-title">Блокировка пользователей</h1>
+    <p>Заблокировать доступ к OpenVPN для пользователя можно двумя способами:</p>
+<ul>
+<li>Через список активных подключений</li>
+<li>Через страницу пользователя</li>
+</ul>
+<p>Независимо от способа, при блокировке приложение отключает пользователя от OpenVPN-сервера и блокирует сертификат.</p>
+<h4 id="osobennosti-blokirovki-sertifikatov-v-openvpn">Особенности блокировки сертификатов в OpenVPN</h4>
+<p>После блокировки ключа пользователя потребуется 1 час прежде чем OpenVPN проверит список заблокированных сертификатов.
+Это является особенностью реализации OpenVPN.</p>
+<p>Ускорить этот процесс можно только перезапуском службы OpenVPN. </p>
+<h4 id="blokirovka-cherez-spisok-aktivnykh-podkliuchenii">Блокировка через список активных подключений</h4>
+<p>В списке подключённых пользователей откройте меню действий и нажмите &quot;Заблокировать&quot;:</p>
+<p><img src="/images/manage-users/block-user-from-menu.png" alt="alt text" title="Блокировка пользователя через меню" /></p>
+<h4 id="blokirovka-cherez-stranitsu-pol-zovatelia">Блокировка через страницу пользователя</h4>
+<p>Зайдите на вкладку &quot;Пользователи&quot;, затем выберите пользователя и в контекстном меню &quot;Редактировать&quot;.</p>
+<p>В левом нижнем углу экрана нажмите &quot;Заблокировать&quot;:</p>
+<p><img src="/images/manage-users/block-from-user-page.png" alt="alt text" title="Блокировка пользователя" /></p>
+
+
+            </div>
+        </div>
+
+        <div class="prev-link">
+            
+    
+        <a class="previous" href="https:&#x2F;&#x2F;docs.dfov.ru&#x2F;manage-users&#x2F;create-ovpn&#x2F;"><</a>
+    
+
+        </div>
+
+        <div class="next-link">
+            
+    
+        <a class="next" href="https:&#x2F;&#x2F;docs.dfov.ru&#x2F;manage-users&#x2F;unlock-users&#x2F;">></a>
+    
+
+        </div>
+    </div>
+
+    <script type="text/javascript" src="https://docs.dfov.ru/theme.js"></script>
+    
+
+
+</body>
+</html>

@@ -1,0 +1,639 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta http-equiv="content-type" content="text/html; charset=utf-8">
+
+    <!-- Enable responsiveness on mobile devices-->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
+
+    <title>
+Установка и настройка OpenVPN сервера для CentOS 7 | Dashboard для OpenVPN
+</title>
+
+    <link rel="canonical" href="https:&#x2F;&#x2F;docs.dfov.ru">
+
+    
+<meta name="Description" content="Как установить и настроить OpenVPN-сервер для CentOS 7">
+
+
+    
+
+    <meta name="keywords" content="Документация к Dashboard for OpenVPN, Dashboard for OpenVPN, документация">
+
+
+
+    
+    <meta property="og:title" content="Dashboard для OpenVPN" />
+    
+
+    
+<meta property="og:description" content="Как установить и настроить OpenVPN-сервер для CentOS 7"/>
+
+
+    
+<meta property="og:url" content="/openvpn&#x2F;install-openvpn-server-centos7&#x2F;" />
+
+
+    
+    <meta property="og:type" content="article" />
+    
+
+    
+
+    
+
+
+
+    <link rel="icon" type="image&#x2F;x-icon" href="/favicon.ico">
+
+    
+    
+
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&family=Montserrat:wght@700;800&display=swap"
+          rel="stylesheet">
+
+    <!-- CSS -->
+    
+    <link rel="stylesheet" href="https://docs.dfov.ru/style.css">
+    
+
+    
+    
+</head>
+
+<body>
+    <div class="menu">
+        
+        <div class="menu__header">
+            <div class="menu__header__kind text-color-secondary">
+                ДОКУМЕНТАЦИЯ
+            </div>
+            <h2>Dashboard для OpenVPN</h2>
+
+            
+            <div style="margin-top: 20px; margin-bottom: 10px">
+                <a href="https:&#x2F;&#x2F;dfov.ru" target="_blank" title="Перейти на сайт"
+                   class="menu__header__site-link">Сайт</a>
+            </div>
+            
+        </div>
+
+        
+        <nav role="navigation">
+            <ul>
+                
+                    
+                    
+                        
+                        <li>
+                            
+                            <a href="https:&#x2F;&#x2F;docs.dfov.ru&#x2F;intro&#x2F;"
+                               
+                               class="font-weight-bold"
+                            >
+                                <strong>1.</strong>
+                                Введение
+                            </a>
+                            
+                        </li>
+                    
+                        
+                        <li>
+                            
+                            <a href="https:&#x2F;&#x2F;docs.dfov.ru&#x2F;installation&#x2F;"
+                               
+                               class="font-weight-bold"
+                            >
+                                <strong>2.</strong>
+                                Установка
+                            </a>
+                            
+                        </li>
+                    
+                        
+                        <li>
+                            
+                            <a href="https:&#x2F;&#x2F;docs.dfov.ru&#x2F;configuration&#x2F;"
+                               
+                               class="font-weight-bold"
+                            >
+                                <strong>3.</strong>
+                                Настройка
+                            </a>
+                            
+                                <ul>
+                                    
+                                        <li >
+                                            <a href="https:&#x2F;&#x2F;docs.dfov.ru&#x2F;configuration&#x2F;web-config&#x2F;">
+                                                <strong>3.1.</strong>
+                                                Настройка через Web-интерфейс
+                                            </a>
+                                        </li>
+                                    
+                                        <li >
+                                            <a href="https:&#x2F;&#x2F;docs.dfov.ru&#x2F;configuration&#x2F;app-port&#x2F;">
+                                                <strong>3.2.</strong>
+                                                Настройка порта приложения
+                                            </a>
+                                        </li>
+                                    
+                                        <li >
+                                            <a href="https:&#x2F;&#x2F;docs.dfov.ru&#x2F;configuration&#x2F;proxy-with-nginx&#x2F;">
+                                                <strong>3.3.</strong>
+                                                Проксирование через Nginx
+                                            </a>
+                                        </li>
+                                    
+                                </ul>
+                            
+                        </li>
+                    
+                        
+                        <li>
+                            
+                            <a href="https:&#x2F;&#x2F;docs.dfov.ru&#x2F;manage-users&#x2F;"
+                               
+                               class="font-weight-bold"
+                            >
+                                <strong>4.</strong>
+                                Управление пользователями
+                            </a>
+                            
+                                <ul>
+                                    
+                                        <li >
+                                            <a href="https:&#x2F;&#x2F;docs.dfov.ru&#x2F;manage-users&#x2F;create-users&#x2F;">
+                                                <strong>4.1.</strong>
+                                                Создание пользователей
+                                            </a>
+                                        </li>
+                                    
+                                        <li >
+                                            <a href="https:&#x2F;&#x2F;docs.dfov.ru&#x2F;manage-users&#x2F;create-ovpn&#x2F;">
+                                                <strong>4.2.</strong>
+                                                Как создать профиль подключения
+                                            </a>
+                                        </li>
+                                    
+                                        <li >
+                                            <a href="https:&#x2F;&#x2F;docs.dfov.ru&#x2F;manage-users&#x2F;block-users&#x2F;">
+                                                <strong>4.3.</strong>
+                                                Блокировка пользователей
+                                            </a>
+                                        </li>
+                                    
+                                        <li >
+                                            <a href="https:&#x2F;&#x2F;docs.dfov.ru&#x2F;manage-users&#x2F;unlock-users&#x2F;">
+                                                <strong>4.4.</strong>
+                                                Разблокировка пользователей
+                                            </a>
+                                        </li>
+                                    
+                                        <li >
+                                            <a href="https:&#x2F;&#x2F;docs.dfov.ru&#x2F;manage-users&#x2F;new-credentials&#x2F;">
+                                                <strong>4.5.</strong>
+                                                Перевыпуск сертификата и ключа пользователя
+                                            </a>
+                                        </li>
+                                    
+                                        <li >
+                                            <a href="https:&#x2F;&#x2F;docs.dfov.ru&#x2F;manage-users&#x2F;import-users&#x2F;">
+                                                <strong>4.6.</strong>
+                                                Импорт пользователей
+                                            </a>
+                                        </li>
+                                    
+                                </ul>
+                            
+                        </li>
+                    
+                        
+                        <li>
+                            
+                            <a href="https:&#x2F;&#x2F;docs.dfov.ru&#x2F;openvpn&#x2F;"
+                               
+                               class="font-weight-bold"
+                            >
+                                <strong>5.</strong>
+                                OpenVPN
+                            </a>
+                            
+                                <ul>
+                                    
+                                        <li >
+                                            <a href="https:&#x2F;&#x2F;docs.dfov.ru&#x2F;openvpn&#x2F;config-ovpn-client&#x2F;">
+                                                <strong>5.1.</strong>
+                                                Настройка OpenVPN-клиента
+                                            </a>
+                                        </li>
+                                    
+                                        <li class="active">
+                                            <a href="https:&#x2F;&#x2F;docs.dfov.ru&#x2F;openvpn&#x2F;install-openvpn-server-centos7&#x2F;">
+                                                <strong>5.2.</strong>
+                                                Установка и настройка OpenVPN сервера для CentOS 7
+                                            </a>
+                                        </li>
+                                    
+                                </ul>
+                            
+                        </li>
+                    
+                        
+                        <li>
+                            
+                            <a href="https:&#x2F;&#x2F;docs.dfov.ru&#x2F;troubleshooting&#x2F;"
+                               
+                               class="font-weight-bold"
+                            >
+                                <strong>6.</strong>
+                                Решение проблем
+                            </a>
+                            
+                        </li>
+                    
+                
+            </ul>
+        </nav>
+        
+        
+    </div>
+
+    <div class="page">
+        <div class="page__header">
+            <div class="menu-icon">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </div>
+
+        <div class="page__content">
+            <div class="book-content">
+                
+    <h1 class="page-title">Установка и настройка OpenVPN сервера для CentOS 7</h1>
+    <p>Устанавливаем репозитарий EPEL:</p>
+<pre style="background-color:#2b303b;">
+<span style="color:#c0c5ce;">yum -y install epel-release</span><span style="color:#c0c5ce;">
+</span></pre>
+<p>Обновляем приложения сервера до последних версий:</p>
+<pre style="background-color:#2b303b;">
+<span style="color:#c0c5ce;">yum update -y</span><span style="color:#c0c5ce;">
+</span></pre>
+<p>Устанавливаем OpenVPN-сервер и утилиту <code>wget</code>:</p>
+<pre style="background-color:#2b303b;">
+<span style="color:#c0c5ce;">yum install -y openvpn wget</span><span style="color:#c0c5ce;">
+</span></pre><h3 id="ustanavlivaem-easy-rsa-3">Устанавливаем Easy RSA 3</h3>
+<p>Идём на Github проекта в раздел релизов и скачиваем свежую версию: <a href="https://github.com/OpenVPN/easy-rsa/releases">https://github.com/OpenVPN/easy-rsa/releases</a>.</p>
+<p>Например, ссылка может быть такой: 
+<a href="https://github.com/OpenVPN/easy-rsa/releases/download/v3.0.7/EasyRSA-3.0.7.tgz">https://github.com/OpenVPN/easy-rsa/releases/download/v3.0.7/EasyRSA-3.0.7.tgz</a></p>
+<p><img src="/images/openvpn/server/easy-rsa-releases.png" alt="alt text" title="Скачиваем Easy RSA 3 с Github" /></p>
+<p>Скачиваем:</p>
+<pre style="background-color:#2b303b;">
+<span style="color:#c0c5ce;">wget https://github.com/OpenVPN/easy-rsa/releases/download/v3.0.7/EasyRSA-3.0.7.tgz -O /tmp/EasyRSA-3.0.7.tgz</span><span style="color:#c0c5ce;">
+</span></pre>
+<p>Распаковываем:</p>
+<pre style="background-color:#2b303b;">
+<span style="color:#c0c5ce;">cd /tmp</span><span style="color:#c0c5ce;">
+tar xvzf EasyRSA-3.0.7.tgz</span><span style="color:#c0c5ce;">
+</span></pre>
+<p>Копируем папку <code>EasyRSA-3.0.7</code> как <code>/etc/openvpn/easy-rsa</code>: </p>
+<pre style="background-color:#2b303b;">
+<span style="color:#c0c5ce;">mkdir -p /etc/openvpn/easy-rsa</span><span style="color:#c0c5ce;">
+</span><span style="color:#c0c5ce;">
+cp -r /tmp/EasyRSA-3.0.7/* /etc/openvpn/easy-rsa</span><span style="color:#c0c5ce;">
+</span></pre>
+<p>Убедиться в том что вы всё правильно скопировали можно вот так:</p>
+<pre style="background-color:#2b303b;">
+<span style="color:#c0c5ce;">[root@dfov tmp]# ls -liah /etc/openvpn/easy-rsa</span><span style="color:#c0c5ce;">
+total 140K</span><span style="color:#c0c5ce;">
+ 33986276 drwxr-xr-x. 4 root root  214 Aug 29 14:03 .</span><span style="color:#c0c5ce;">
+ 33987918 drwxr-xr-x. 5 root root   69 Aug 29 13:52 ..</span><span style="color:#c0c5ce;">
+ 33986277 -rw-r--r--. 1 root root 4.5K Aug 29 14:03 ChangeLog</span><span style="color:#c0c5ce;">
+ 33986278 -rw-r--r--. 1 root root 1.3K Aug 29 14:03 COPYING.md</span><span style="color:#c0c5ce;">
+ 67402124 drwxr-xr-x. 2 root root  131 Aug 29 14:03 doc</span><span style="color:#c0c5ce;">
+ 33986279 -rwxr-xr-x. 1 root root  74K Aug 29 14:03 easyrsa</span><span style="color:#c0c5ce;">
+ 33986280 -rw-r--r--. 1 root root  18K Aug 29 14:03 gpl-2.0.txt</span><span style="color:#c0c5ce;">
+ 33986281 -rw-r--r--. 1 root root 1.1K Aug 29 14:03 mktemp.txt</span><span style="color:#c0c5ce;">
+ 33986282 -rw-r--r--. 1 root root 4.6K Aug 29 14:03 openssl-easyrsa.cnf</span><span style="color:#c0c5ce;">
+ 33991470 -rw-r--r--. 1 root root 2.1K Aug 29 14:03 README.md</span><span style="color:#c0c5ce;">
+ 33992093 -rw-r--r--. 1 root root 3.3K Aug 29 14:03 README.quickstart.md</span><span style="color:#c0c5ce;">
+ 33992094 -rw-r--r--. 1 root root 8.8K Aug 29 14:03 vars.example</span><span style="color:#c0c5ce;">
+100678152 drwxr-xr-x. 2 root root  122 Aug 29 14:03 x509-types</span><span style="color:#c0c5ce;">
+</span></pre><h3 id="podgotavlivaem-konfiguratsiiu">Подготавливаем конфигурацию</h3>
+<p>Редактируем файл <code>/etc/openvpn/server.conf</code>.</p>
+<h4 id="nastraivaem-marshrutizatsiiu-trafika-cherez-openvpn-server">Настраиваем маршрутизацию трафика через OpenVPN сервер</h4>
+<p>Весь трафик от клиента будет проходить через VPN-сервер. Для этого раскоментируем строчку:</p>
+<pre style="background-color:#2b303b;">
+<span style="color:#c0c5ce;">push &quot;redirect-gateway def1 bypass-dhcp&quot;</span><span style="color:#c0c5ce;">
+</span></pre><h4 id="ukazyvaem-servera-dns">Указываем сервера DNS</h4>
+<p>Указываем какие DNS-сервера получит клиент после успешного подключения:</p>
+<pre style="background-color:#2b303b;">
+<span style="color:#c0c5ce;">push &quot;dhcp-option DNS 8.8.8.8&quot;</span><span style="color:#c0c5ce;">
+push &quot;dhcp-option DNS 8.8.4.4&quot;</span><span style="color:#c0c5ce;">
+</span></pre><h4 id="ukazyvaem-pol-zovatelia-dlia-zapuska-openvpn">Указываем пользователя для запуска OpenVPN</h4>
+<p>Указываем пользователя <code>nobody</code>:</p>
+<pre style="background-color:#2b303b;">
+<span style="color:#c0c5ce;">user nobody</span><span style="color:#c0c5ce;">
+group nobody</span><span style="color:#c0c5ce;">
+</span></pre><h4 id="ukazyvaem-diapazon-ip-adresov-dlia-vpn-seti">Указываем диапазон IP-адресов для VPN-сети</h4>
+<p>Раскомментируем строчку:</p>
+<pre style="background-color:#2b303b;">
+<span style="color:#c0c5ce;">topology subnet</span><span style="color:#c0c5ce;">
+</span></pre>
+<p>и указываем сеть и маску:</p>
+<pre style="background-color:#2b303b;">
+<span style="color:#c0c5ce;">server 10.8.0.0 255.255.255.0</span><span style="color:#c0c5ce;">
+</span></pre><h4 id="vkliuchaem-zhurnalirovanie">Включаем журналирование</h4>
+<p>Раскомментируем строчку</p>
+<pre style="background-color:#2b303b;">
+<span style="color:#c0c5ce;">log-append  openvpn.log</span><span style="color:#c0c5ce;">
+</span></pre><h4 id="nastraivaem-tls">Настраиваем TLS</h4>
+<p>Раскомментируем строчку:</p>
+<pre style="background-color:#2b303b;">
+<span style="color:#c0c5ce;">tls-auth ta.key 0</span><span style="color:#c0c5ce;">
+</span></pre>
+<p>Создадим <code>ta.key</code> файл:</p>
+<pre style="background-color:#2b303b;">
+<span style="color:#c0c5ce;">openvpn --genkey --secret /etc/openvpn/ta.key</span><span style="color:#c0c5ce;">
+</span></pre><h3 id="generiruem-kliuchi-i-sertifikaty">Генерируем ключи и сертификаты</h3>
+<p>В данной статей рассматривается случай когда корневой центр сертификации находится на том же сервере где и OpenVPN.
+Для максимальной безопасности разделяют корневой сервер (CA) размещают отдельно.</p>
+<h4 id="gotovim-parametry-sertifkatov-po-umolchaniiu">Готовим параметры сертифкатов по умолчанию</h4>
+<pre style="background-color:#2b303b;">
+<span style="color:#c0c5ce;">cd /etc/openvpn/easy-rsa</span><span style="color:#c0c5ce;">
+cp vars.example vars</span><span style="color:#c0c5ce;">
+</span></pre>
+<p>Открываем файл <code>vars</code> редактором, нас интересуют вот эти строчки:</p>
+<pre style="background-color:#2b303b;">
+<span style="color:#c0c5ce;">#set_var EASYRSA_CERT_EXPIRE    825</span><span style="color:#c0c5ce;">
+</span><span style="color:#c0c5ce;">
+#set_var EASYRSA_REQ_COUNTRY    &quot;US&quot;</span><span style="color:#c0c5ce;">
+#set_var EASYRSA_REQ_PROVINCE   &quot;California&quot;</span><span style="color:#c0c5ce;">
+#set_var EASYRSA_REQ_CITY       &quot;San Francisco&quot;</span><span style="color:#c0c5ce;">
+#set_var EASYRSA_REQ_ORG        &quot;Copyleft Certificate Co&quot;</span><span style="color:#c0c5ce;">
+#set_var EASYRSA_REQ_EMAIL      &quot;me@example.net&quot;</span><span style="color:#c0c5ce;">
+#set_var EASYRSA_REQ_OU         &quot;My Organizational Unit&quot;</span><span style="color:#c0c5ce;">
+</span></pre>
+<p>Раскомментируем и впишем значения которые нам актуальны:</p>
+<p><strong>Сколько дней будут действительны сертификаты:</strong></p>
+<p>По умолчанию 825 дней (~2.2 года). </p>
+<p>#set_var EASYRSA_CERT_EXPIRE    825</p>
+<p><strong>Страну:</strong></p>
+<pre style="background-color:#2b303b;">
+<span style="color:#c0c5ce;">set_var EASYRSA_REQ_COUNTRY    &quot;RU&quot;</span><span style="color:#c0c5ce;">
+</span></pre>
+<p><strong>Провинцию\Область\Регион:</strong></p>
+<pre style="background-color:#2b303b;">
+<span style="color:#c0c5ce;">set_var EASYRSA_REQ_PROVINCE   &quot;Moscow&quot;</span><span style="color:#c0c5ce;">
+</span></pre>
+<p><strong>Город:</strong></p>
+<pre style="background-color:#2b303b;">
+<span style="color:#c0c5ce;">set_var EASYRSA_REQ_CITY       &quot;Moscow&quot;</span><span style="color:#c0c5ce;">
+</span></pre>
+<p><strong>Название организации:</strong>
+От имени которой мы будем выдавать сертификаты.</p>
+<pre style="background-color:#2b303b;">
+<span style="color:#c0c5ce;">set_var EASYRSA_REQ_ORG        &quot;DFOV&quot;</span><span style="color:#c0c5ce;">
+</span></pre>
+<p><strong>Почтовый адрес по умолчанию:</strong></p>
+<pre style="background-color:#2b303b;">
+<span style="color:#c0c5ce;">set_var EASYRSA_REQ_EMAIL      &quot;hello@dfov.ru&quot;</span><span style="color:#c0c5ce;">
+</span></pre>
+<p><strong>Отдел:</strong></p>
+<pre style="background-color:#2b303b;">
+<span style="color:#c0c5ce;">set_var EASYRSA_REQ_OU          &quot;default&quot;</span><span style="color:#c0c5ce;">
+</span></pre><h4 id="generiruem-kliuchi-i-sertifikaty-dlia-tsentra-sertifikatsii-ca">Генерируем ключи и сертификаты для центра сертификации (CA)</h4>
+<pre style="background-color:#2b303b;">
+<span style="color:#c0c5ce;">cd /etc/openvpn/easy-rsa</span><span style="color:#c0c5ce;">
+</span><span style="color:#c0c5ce;">
+$ ./easyrsa init-pki</span><span style="color:#c0c5ce;">
+</span><span style="color:#c0c5ce;">
+Note: using Easy-RSA configuration from: /etc/openvpn/easy-rsa/vars</span><span style="color:#c0c5ce;">
+</span><span style="color:#c0c5ce;">
+init-pki complete; you may now create a CA or requests.</span><span style="color:#c0c5ce;">
+Your newly created PKI dir is: /etc/openvpn/easy-rsa/pki</span><span style="color:#c0c5ce;">
+</span></pre>
+<p>Затем:</p>
+<pre style="background-color:#2b303b;">
+<span style="color:#c0c5ce;">$ ./easyrsa build-ca nopass</span><span style="color:#c0c5ce;">
+</span><span style="color:#c0c5ce;">
+Note: using Easy-RSA configuration from: /etc/openvpn/easy-rsa/vars</span><span style="color:#c0c5ce;">
+Using SSL: openssl OpenSSL 1.0.2k-fips  26 Jan 2017</span><span style="color:#c0c5ce;">
+Generating RSA private key, 2048 bit long modulus</span><span style="color:#c0c5ce;">
+........................+++</span><span style="color:#c0c5ce;">
+...................................................................................+++</span><span style="color:#c0c5ce;">
+e is 65537 (0x10001)</span><span style="color:#c0c5ce;">
+You are about to be asked to enter information that will be incorporated</span><span style="color:#c0c5ce;">
+into your certificate request.</span><span style="color:#c0c5ce;">
+What you are about to enter is what is called a Distinguished Name or a DN.</span><span style="color:#c0c5ce;">
+There are quite a few fields but you can leave some blank</span><span style="color:#c0c5ce;">
+For some fields there will be a default value,</span><span style="color:#c0c5ce;">
+If you enter &#39;.&#39;, the field will be left blank.</span><span style="color:#c0c5ce;">
+-----</span><span style="color:#c0c5ce;">
+Common Name (eg: your user, host, or server name) [Easy-RSA CA]:</span><span style="color:#c0c5ce;">
+</span></pre>
+<p>Введите имя пользователя, хост или имя сервера. Для примера используем <code>DFOV</code>.</p>
+<h4 id="generiruem-sertifikat-servera-kliuch-i-faily-shifrovaniia">Генерируем сертификат сервера, ключ и файлы шифрования</h4>
+<pre style="background-color:#2b303b;">
+<span style="color:#c0c5ce;">$ cd /etc/openvpn/easy-rsa</span><span style="color:#c0c5ce;">
+$ ./easyrsa gen-req server nopass</span><span style="color:#c0c5ce;">
+</span><span style="color:#c0c5ce;">
+Note: using Easy-RSA configuration from: /etc/openvpn/easy-rsa/vars</span><span style="color:#c0c5ce;">
+Using SSL: openssl OpenSSL 1.0.2k-fips  26 Jan 2017</span><span style="color:#c0c5ce;">
+Generating a 2048 bit RSA private key</span><span style="color:#c0c5ce;">
+...+++</span><span style="color:#c0c5ce;">
+..........................+++</span><span style="color:#c0c5ce;">
+writing new private key to &#39;/etc/openvpn/easy-rsa/pki/easy-rsa-5302.LfIZ4s/tmp.CFy2Jx&#39;</span><span style="color:#c0c5ce;">
+-----</span><span style="color:#c0c5ce;">
+You are about to be asked to enter information that will be incorporated</span><span style="color:#c0c5ce;">
+into your certificate request.</span><span style="color:#c0c5ce;">
+What you are about to enter is what is called a Distinguished Name or a DN.</span><span style="color:#c0c5ce;">
+There are quite a few fields but you can leave some blank</span><span style="color:#c0c5ce;">
+For some fields there will be a default value,</span><span style="color:#c0c5ce;">
+If you enter &#39;.&#39;, the field will be left blank.</span><span style="color:#c0c5ce;">
+-----</span><span style="color:#c0c5ce;">
+Common Name (eg: your user, host, or server name) [server]:</span><span style="color:#c0c5ce;">
+</span><span style="color:#c0c5ce;">
+Keypair and certificate request completed. Your files are:</span><span style="color:#c0c5ce;">
+req: /etc/openvpn/easy-rsa/pki/reqs/server.req</span><span style="color:#c0c5ce;">
+key: /etc/openvpn/easy-rsa/pki/private/server.key</span><span style="color:#c0c5ce;">
+</span></pre>
+<p>Копируем полученный файл:</p>
+<pre style="background-color:#2b303b;">
+<span style="color:#c0c5ce;">cp pki/private/server.key /etc/openvpn/</span><span style="color:#c0c5ce;">
+</span></pre>
+<p>Выпускаем сертификат:</p>
+<pre style="background-color:#2b303b;">
+<span style="color:#c0c5ce;">$ ./easyrsa sign-req server server</span><span style="color:#c0c5ce;">
+</span><span style="color:#c0c5ce;">
+Note: using Easy-RSA configuration from: /etc/openvpn/easy-rsa/vars</span><span style="color:#c0c5ce;">
+Using SSL: openssl OpenSSL 1.0.2k-fips  26 Jan 2017</span><span style="color:#c0c5ce;">
+</span><span style="color:#c0c5ce;">
+</span><span style="color:#c0c5ce;">
+You are about to sign the following certificate.</span><span style="color:#c0c5ce;">
+Please check over the details shown below for accuracy. Note that this request</span><span style="color:#c0c5ce;">
+has not been cryptographically verified. Please be sure it came from a trusted</span><span style="color:#c0c5ce;">
+source or that you have verified the request checksum with the sender.</span><span style="color:#c0c5ce;">
+</span><span style="color:#c0c5ce;">
+Request subject, to be signed as a server certificate for 825 days:</span><span style="color:#c0c5ce;">
+</span><span style="color:#c0c5ce;">
+subject=</span><span style="color:#c0c5ce;">
+    commonName                = server</span><span style="color:#c0c5ce;">
+</span><span style="color:#c0c5ce;">
+</span><span style="color:#c0c5ce;">
+Type the word &#39;yes&#39; to continue, or any other input to abort.</span><span style="color:#c0c5ce;">
+  Confirm request details: yes</span><span style="color:#c0c5ce;">
+Using configuration from /etc/openvpn/easy-rsa/pki/easy-rsa-5448.VtsIpt/tmp.XbNtc9</span><span style="color:#c0c5ce;">
+Check that the request matches the signature</span><span style="color:#c0c5ce;">
+Signature ok</span><span style="color:#c0c5ce;">
+The Subject&#39;s Distinguished Name is as follows</span><span style="color:#c0c5ce;">
+commonName            :ASN.1 12:&#39;server&#39;</span><span style="color:#c0c5ce;">
+Certificate is to be certified until Dec  2 14:48:34 2022 GMT (825 days)</span><span style="color:#c0c5ce;">
+</span><span style="color:#c0c5ce;">
+Write out database with 1 new entries</span><span style="color:#c0c5ce;">
+Data Base Updated</span><span style="color:#c0c5ce;">
+</span><span style="color:#c0c5ce;">
+Certificate created at: /etc/openvpn/easy-rsa/pki/issued/server.crt</span><span style="color:#c0c5ce;">
+</span></pre>
+<p>Копируем:</p>
+<pre style="background-color:#2b303b;">
+<span style="color:#c0c5ce;">cp pki/ca.key /etc/openvpn/</span><span style="color:#c0c5ce;">
+cp pki/issued/server.key /etc/openvpn/</span><span style="color:#c0c5ce;">
+</span></pre><h4 id="generiruem-kriptostoikii-kliuch-obmena-po-algoritmu-deffie-hellman">Генерируем криптостойкий ключ обмена по алгоритму Deffie-Hellman</h4>
+<pre style="background-color:#2b303b;">
+<span style="color:#c0c5ce;">$ ./easyrsa gen-dh</span><span style="color:#c0c5ce;">
+</span><span style="color:#c0c5ce;">
+...</span><span style="color:#c0c5ce;">
+DH parameters of size 2048 created at /etc/openvpn/easy-rsa/pki/dh.pem</span><span style="color:#c0c5ce;">
+</span></pre>
+<p>Копируем ключ:</p>
+<pre style="background-color:#2b303b;">
+<span style="color:#c0c5ce;">$ cp pki/dh.pem /etc/openvpn/</span><span style="color:#c0c5ce;">
+</span></pre>
+<p>Генерируем ключ для TLS:</p>
+<pre style="background-color:#2b303b;">
+<span style="color:#c0c5ce;">$ openvpn --genkey --secret /etc/openvpn/ta.key</span><span style="color:#c0c5ce;">
+</span></pre>
+<p>Обновляем права:</p>
+<pre style="background-color:#2b303b;">
+<span style="color:#c0c5ce;">chown -R openvpn: /etc/openvpn</span><span style="color:#c0c5ce;">
+</span></pre><h3 id="vkliuchaem-avtozapusk-dlia-servisa-openvpn">Включаем автозапуск для сервиса OpenVPN</h3>
+<pre style="background-color:#2b303b;">
+<span style="color:#c0c5ce;">systemctl enable openvpn@server</span><span style="color:#c0c5ce;">
+</span></pre><h3 id="nastraivaem-marshrutizatsiiu">Настраиваем маршрутизацию</h3>
+<p>Теперь необходимо настроить доступ и правильную маршрутизацию трафика для OpenVPN.</p>
+<pre style="background-color:#2b303b;">
+<span style="color:#c0c5ce;">$ firewall-cmd --zone=public --add-service openvpn --permanent</span><span style="color:#c0c5ce;">
+$ firewall-cmd --permanent --add-masquerade</span><span style="color:#c0c5ce;">
+$ SHARK=$(ip route get 8.8.8.8 | awk &#39;NR==1 {print $(NF-2)}&#39;)</span><span style="color:#c0c5ce;">
+$ firewall-cmd --permanent --direct --passthrough ipv4 -t nat -A POSTROUTING -s 10.8.0.0/24 -o $SHARK -j MASQUERADE</span><span style="color:#c0c5ce;">
+$ firewall-cmd --reload</span><span style="color:#c0c5ce;">
+</span></pre>
+<p>Включаем опцию <code>ip_forward</code> в параметрах ядра. Редактируем <code>/etc/sysctl.conf</code>:</p>
+<pre style="background-color:#2b303b;">
+<span style="color:#c0c5ce;">net.ipv4.ip_forward = 1</span><span style="color:#c0c5ce;">
+</span></pre>
+<p>Перезапускаем сеть:</p>
+<pre style="background-color:#2b303b;">
+<span style="color:#c0c5ce;">$ systemctl restart network.service</span><span style="color:#c0c5ce;">
+</span></pre><h3 id="zapuskaem-server">Запускаем сервер</h3>
+<pre style="background-color:#2b303b;">
+<span style="color:#c0c5ce;">$ systemctl start openvpn@server.service</span><span style="color:#c0c5ce;">
+</span></pre>
+<p>Если сервер запустился, то команда <code>status</code> покажет примерно такой вывод:</p>
+<pre style="background-color:#2b303b;">
+<span style="color:#c0c5ce;">$ systemctl status openvpn@server.service</span><span style="color:#c0c5ce;">
+</span><span style="color:#c0c5ce;">
+openvpn@server.service - OpenVPN Robust And Highly Flexible Tunneling Application On server</span><span style="color:#c0c5ce;">
+   Loaded: loaded (/usr/lib/systemd/system/openvpn@.service; enabled; vendor preset: disabled)</span><span style="color:#c0c5ce;">
+   Active: **active (running)** since Wed 2020-08-14 15:20:11 EDT; 7s ago</span><span style="color:#c0c5ce;">
+ Main PID: 1864 (openvpn)</span><span style="color:#c0c5ce;">
+   Status: &quot;Initialization Sequence Completed&quot;</span><span style="color:#c0c5ce;">
+   CGroup: /system.slice/system-openvpn.slice/openvpn@server.service</span><span style="color:#c0c5ce;">
+           └─2824 /usr/sbin/openvpn --cd /etc/openvpn/ --config server.conf</span><span style="color:#c0c5ce;">
+</span></pre><h3 id="panel-upravleniia-dlia-openvpn-servera">Панель управления для OpenVPN сервера</h3>
+<p>Теперь вы можете <a href="../../installation/">установить Web-интерфейс</a> для управления сервером.</p>
+
+
+            </div>
+        </div>
+
+        <div class="prev-link">
+            
+    
+        <a class="previous" href="https:&#x2F;&#x2F;docs.dfov.ru&#x2F;openvpn&#x2F;config-ovpn-client&#x2F;"><</a>
+    
+
+        </div>
+
+        <div class="next-link">
+            
+    
+        
+        
+        
+        
+            
+            
+            
+        
+            
+            
+            
+        
+            
+            
+            
+                
+            
+                
+            
+                
+            
+        
+            
+            
+            
+                
+            
+                
+            
+                
+            
+                
+            
+                
+            
+                
+            
+        
+            
+            
+            
+                
+            
+                
+                    
+                
+            
+        
+            
+            
+                <a class="next" href="https:&#x2F;&#x2F;docs.dfov.ru&#x2F;troubleshooting&#x2F;">></a>
+                
+                
+            
+            
+        
+    
+
+        </div>
+    </div>
+
+    <script type="text/javascript" src="https://docs.dfov.ru/theme.js"></script>
+    
+
+
+</body>
+</html>

@@ -1,0 +1,2 @@
+User-agent: *
+Sitemap: https://docs.dfov.ru/sitemap.xml
