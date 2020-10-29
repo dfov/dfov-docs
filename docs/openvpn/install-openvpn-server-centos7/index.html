@@ -286,7 +286,13 @@
 <p>Устанавливаем OpenVPN-сервер и утилиту <code>wget</code>:</p>
 <pre style="background-color:#2b303b;">
 <span style="color:#c0c5ce;">yum install -y openvpn wget</span><span style="color:#c0c5ce;">
-</span></pre><h3 id="ustanavlivaem-easy-rsa-3">Устанавливаем Easy RSA 3</h3>
+</span></pre>
+<p>Копируем файл конфигурации для сервера:</p>
+<pre style="background-color:#2b303b;">
+<span style="color:#c0c5ce;">cp /usr/share/doc/openvpn-X.Y.Z/sample/sample-config-files/server.conf /etc/openvpn/</span><span style="color:#c0c5ce;">
+</span></pre>
+<p>Где вместо <code>X.Y.Z</code> будет версия OpenVPN.</p>
+<h3 id="ustanavlivaem-easy-rsa-3">Устанавливаем Easy RSA 3</h3>
 <p>Идём на Github проекта в раздел релизов и скачиваем свежую версию: <a href="https://github.com/OpenVPN/easy-rsa/releases">https://github.com/OpenVPN/easy-rsa/releases</a>.</p>
 <p>Например, ссылка может быть такой: 
 <a href="https://github.com/OpenVPN/easy-rsa/releases/download/v3.0.7/EasyRSA-3.0.7.tgz">https://github.com/OpenVPN/easy-rsa/releases/download/v3.0.7/EasyRSA-3.0.7.tgz</a></p>
@@ -326,7 +332,12 @@ total 140K</span><span style="color:#c0c5ce;">
 </span></pre><h3 id="podgotavlivaem-konfiguratsiiu">Подготавливаем конфигурацию</h3>
 <p>Редактируем файл <code>/etc/openvpn/server.conf</code>.</p>
 <h4 id="nastraivaem-marshrutizatsiiu-trafika-cherez-openvpn-server">Настраиваем маршрутизацию трафика через OpenVPN сервер</h4>
-<p>Весь трафик от клиента будет проходить через VPN-сервер. Для этого раскоментируем строчку:</p>
+<p>Весь трафик от клиента будет проходить через VPN-сервер. Для этого раскомментируем строчку.</p>
+<p>Было:</p>
+<pre style="background-color:#2b303b;">
+<span style="color:#c0c5ce;">;push &quot;redirect-gateway def1 bypass-dhcp&quot;</span><span style="color:#c0c5ce;">
+</span></pre>
+<p>Стало:</p>
 <pre style="background-color:#2b303b;">
 <span style="color:#c0c5ce;">push &quot;redirect-gateway def1 bypass-dhcp&quot;</span><span style="color:#c0c5ce;">
 </span></pre><h4 id="ukazyvaem-servera-dns">Указываем сервера DNS</h4>
@@ -343,26 +354,18 @@ group nobody</span><span style="color:#c0c5ce;">
 <p>Раскомментируем строчку:</p>
 <pre style="background-color:#2b303b;">
 <span style="color:#c0c5ce;">topology subnet</span><span style="color:#c0c5ce;">
-</span></pre>
-<p>и указываем сеть и маску:</p>
-<pre style="background-color:#2b303b;">
-<span style="color:#c0c5ce;">server 10.8.0.0 255.255.255.0</span><span style="color:#c0c5ce;">
 </span></pre><h4 id="vkliuchaem-zhurnalirovanie">Включаем журналирование</h4>
-<p>Раскомментируем строчку</p>
+<p>Чтобы сервер вёл журнал своей работы, раскомментируем строчку:</p>
 <pre style="background-color:#2b303b;">
 <span style="color:#c0c5ce;">log-append  openvpn.log</span><span style="color:#c0c5ce;">
 </span></pre><h4 id="nastraivaem-tls">Настраиваем TLS</h4>
-<p>Раскомментируем строчку:</p>
-<pre style="background-color:#2b303b;">
-<span style="color:#c0c5ce;">tls-auth ta.key 0</span><span style="color:#c0c5ce;">
-</span></pre>
 <p>Создадим <code>ta.key</code> файл:</p>
 <pre style="background-color:#2b303b;">
 <span style="color:#c0c5ce;">openvpn --genkey --secret /etc/openvpn/ta.key</span><span style="color:#c0c5ce;">
 </span></pre><h3 id="generiruem-kliuchi-i-sertifikaty">Генерируем ключи и сертификаты</h3>
 <p>В данной статей рассматривается случай когда корневой центр сертификации находится на том же сервере где и OpenVPN.
 Для максимальной безопасности разделяют корневой сервер (CA) размещают отдельно.</p>
-<h4 id="gotovim-parametry-sertifkatov-po-umolchaniiu">Готовим параметры сертифкатов по умолчанию</h4>
+<h4 id="gotovim-parametry-sertifikatov-po-umolchaniiu">Готовим параметры сертификатов по умолчанию</h4>
 <pre style="background-color:#2b303b;">
 <span style="color:#c0c5ce;">cd /etc/openvpn/easy-rsa</span><span style="color:#c0c5ce;">
 cp vars.example vars</span><span style="color:#c0c5ce;">
@@ -501,8 +504,10 @@ Certificate created at: /etc/openvpn/easy-rsa/pki/issued/server.crt</span><span 
 </span></pre>
 <p>Копируем:</p>
 <pre style="background-color:#2b303b;">
-<span style="color:#c0c5ce;">cp pki/ca.key /etc/openvpn/</span><span style="color:#c0c5ce;">
-cp pki/issued/server.key /etc/openvpn/</span><span style="color:#c0c5ce;">
+<span style="color:#c0c5ce;">cp pki/ca.crt /etc/openvpn/</span><span style="color:#c0c5ce;">
+cp pki/issued/server.crt /etc/openvpn/</span><span style="color:#c0c5ce;">
+cp pki/private/ca.key /etc/openvpn/</span><span style="color:#c0c5ce;">
+cp pki/private/server.key /etc/openvpn/</span><span style="color:#c0c5ce;">
 </span></pre><h4 id="generiruem-kriptostoikii-kliuch-obmena-po-algoritmu-deffie-hellman">Генерируем криптостойкий ключ обмена по алгоритму Deffie-Hellman</h4>
 <pre style="background-color:#2b303b;">
 <span style="color:#c0c5ce;">$ ./easyrsa gen-dh</span><span style="color:#c0c5ce;">
@@ -512,15 +517,12 @@ DH parameters of size 2048 created at /etc/openvpn/easy-rsa/pki/dh.pem</span><sp
 </span></pre>
 <p>Копируем ключ:</p>
 <pre style="background-color:#2b303b;">
-<span style="color:#c0c5ce;">$ cp pki/dh.pem /etc/openvpn/</span><span style="color:#c0c5ce;">
-</span></pre>
-<p>Генерируем ключ для TLS:</p>
-<pre style="background-color:#2b303b;">
-<span style="color:#c0c5ce;">$ openvpn --genkey --secret /etc/openvpn/ta.key</span><span style="color:#c0c5ce;">
+<span style="color:#c0c5ce;">$ cp pki/dh.pem /etc/openvpn/dh2048.pem</span><span style="color:#c0c5ce;">
 </span></pre>
 <p>Обновляем права:</p>
 <pre style="background-color:#2b303b;">
 <span style="color:#c0c5ce;">chown -R openvpn: /etc/openvpn</span><span style="color:#c0c5ce;">
+find /etc/openvpn -type f -name &quot;*.key&quot; -exec chmod o-rwx {} \;</span><span style="color:#c0c5ce;">
 </span></pre><h3 id="vkliuchaem-avtozapusk-dlia-servisa-openvpn">Включаем автозапуск для сервиса OpenVPN</h3>
 <pre style="background-color:#2b303b;">
 <span style="color:#c0c5ce;">systemctl enable openvpn@server</span><span style="color:#c0c5ce;">
@@ -536,6 +538,10 @@ $ firewall-cmd --reload</span><span style="color:#c0c5ce;">
 <p>Включаем опцию <code>ip_forward</code> в параметрах ядра. Редактируем <code>/etc/sysctl.conf</code>:</p>
 <pre style="background-color:#2b303b;">
 <span style="color:#c0c5ce;">net.ipv4.ip_forward = 1</span><span style="color:#c0c5ce;">
+</span></pre>
+<p>И применяем её &quot;на лету&quot;, чтобы не перезагружать операционную систему:</p>
+<pre style="background-color:#2b303b;">
+<span style="color:#c0c5ce;">sysctl net.ipv4.ip_forward=1</span><span style="color:#c0c5ce;">
 </span></pre>
 <p>Перезапускаем сеть:</p>
 <pre style="background-color:#2b303b;">
