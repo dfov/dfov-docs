@@ -8,7 +8,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
 
     <title>
-Установка и настройка OpenVPN сервера для CentOS 7 | Dashboard для OpenVPN
+Установка и настройка OpenVPN-сервера для CentOS 7 | Dashboard для OpenVPN
 </title>
 
     <link rel="canonical" href="https:&#x2F;&#x2F;docs.dfov.ru">
@@ -19,7 +19,7 @@
 
     
 
-    <meta name="keywords" content="Документация к Dashboard for OpenVPN, Dashboard for OpenVPN, документация">
+    <meta name="keywords" content="документация, Dashboard для OpenVPN">
 
 
 
@@ -130,7 +130,7 @@
                                         <li >
                                             <a href="https:&#x2F;&#x2F;docs.dfov.ru&#x2F;configuration&#x2F;web-config&#x2F;">
                                                 <strong>3.1.</strong>
-                                                Настройка через Web-интерфейс
+                                                Настройка через web-интерфейс
                                             </a>
                                         </li>
                                     
@@ -234,7 +234,7 @@
                                         <li class="active">
                                             <a href="https:&#x2F;&#x2F;docs.dfov.ru&#x2F;openvpn&#x2F;install-openvpn-server-centos7&#x2F;">
                                                 <strong>5.2.</strong>
-                                                Установка и настройка OpenVPN сервера для CentOS 7
+                                                Установка и настройка OpenVPN-сервера для CentOS 7
                                             </a>
                                         </li>
                                     
@@ -274,7 +274,7 @@
         <div class="page__content">
             <div class="book-content">
                 
-    <h1 class="page-title">Установка и настройка OpenVPN сервера для CentOS 7</h1>
+    <h1 class="page-title">Установка и настройка OpenVPN-сервера для CentOS 7</h1>
     <p>Устанавливаем репозитарий EPEL:</p>
 <pre style="background-color:#2b303b;">
 <span style="color:#c0c5ce;">yum -y install epel-release</span><span style="color:#c0c5ce;">
@@ -293,7 +293,7 @@
 </span></pre>
 <p>Где вместо <code>X.Y.Z</code> будет версия OpenVPN.</p>
 <h3 id="ustanavlivaem-easy-rsa-3">Устанавливаем Easy RSA 3</h3>
-<p>Идём на Github проекта в раздел релизов и скачиваем свежую версию: <a href="https://github.com/OpenVPN/easy-rsa/releases">https://github.com/OpenVPN/easy-rsa/releases</a>.</p>
+<p>Идём на Github проекта, в раздел релизов, и скачиваем свежую версию: <a href="https://github.com/OpenVPN/easy-rsa/releases">https://github.com/OpenVPN/easy-rsa/releases</a>.</p>
 <p>Например, ссылка может быть такой: 
 <a href="https://github.com/OpenVPN/easy-rsa/releases/download/v3.0.7/EasyRSA-3.0.7.tgz">https://github.com/OpenVPN/easy-rsa/releases/download/v3.0.7/EasyRSA-3.0.7.tgz</a></p>
 <p><img src="/images/openvpn/server/easy-rsa-releases.png" alt="alt text" title="Скачиваем Easy RSA 3 с Github" /></p>
@@ -312,7 +312,7 @@ tar xvzf EasyRSA-3.0.7.tgz</span><span style="color:#c0c5ce;">
 </span><span style="color:#c0c5ce;">
 cp -r /tmp/EasyRSA-3.0.7/* /etc/openvpn/easy-rsa</span><span style="color:#c0c5ce;">
 </span></pre>
-<p>Убедиться в том что вы всё правильно скопировали можно вот так:</p>
+<p>Если вы всё правильно скопировали, то содержимое каталога <code>/etc/openvpn/easy-rsa</code> будет примерно таким:</p>
 <pre style="background-color:#2b303b;">
 <span style="color:#c0c5ce;">[root@dfov tmp]# ls -liah /etc/openvpn/easy-rsa</span><span style="color:#c0c5ce;">
 total 140K</span><span style="color:#c0c5ce;">
@@ -331,7 +331,7 @@ total 140K</span><span style="color:#c0c5ce;">
 100678152 drwxr-xr-x. 2 root root  122 Aug 29 14:03 x509-types</span><span style="color:#c0c5ce;">
 </span></pre><h3 id="podgotavlivaem-konfiguratsiiu">Подготавливаем конфигурацию</h3>
 <p>Редактируем файл <code>/etc/openvpn/server.conf</code>.</p>
-<h4 id="nastraivaem-marshrutizatsiiu-trafika-cherez-openvpn-server">Настраиваем маршрутизацию трафика через OpenVPN сервер</h4>
+<h4 id="nastraivaem-marshrutizatsiiu-trafika-cherez-openvpn-server">Настраиваем маршрутизацию трафика через OpenVPN-сервер</h4>
 <p>Весь трафик от клиента будет проходить через VPN-сервер. Для этого раскомментируем строчку.</p>
 <p>Было:</p>
 <pre style="background-color:#2b303b;">
@@ -341,7 +341,7 @@ total 140K</span><span style="color:#c0c5ce;">
 <pre style="background-color:#2b303b;">
 <span style="color:#c0c5ce;">push &quot;redirect-gateway def1 bypass-dhcp&quot;</span><span style="color:#c0c5ce;">
 </span></pre><h4 id="ukazyvaem-servera-dns">Указываем сервера DNS</h4>
-<p>Указываем какие DNS-сервера получит клиент после успешного подключения:</p>
+<p>Указываем, какие DNS-сервера получит клиент после успешного подключения:</p>
 <pre style="background-color:#2b303b;">
 <span style="color:#c0c5ce;">push &quot;dhcp-option DNS 8.8.8.8&quot;</span><span style="color:#c0c5ce;">
 push &quot;dhcp-option DNS 8.8.4.4&quot;</span><span style="color:#c0c5ce;">
@@ -381,10 +381,12 @@ cp vars.example vars</span><span style="color:#c0c5ce;">
 #set_var EASYRSA_REQ_EMAIL      &quot;me@example.net&quot;</span><span style="color:#c0c5ce;">
 #set_var EASYRSA_REQ_OU         &quot;My Organizational Unit&quot;</span><span style="color:#c0c5ce;">
 </span></pre>
-<p>Раскомментируем и впишем значения которые нам актуальны:</p>
+<p>Раскомментируем и вписываем значения, которые для нас актуальны:</p>
 <p><strong>Сколько дней будут действительны сертификаты:</strong></p>
-<p>По умолчанию 825 дней (~2.2 года). </p>
-<p>#set_var EASYRSA_CERT_EXPIRE    825</p>
+<p>По умолчанию — 825 дней (~ 2.2 года). </p>
+<pre style="background-color:#2b303b;">
+<span style="color:#c0c5ce;">#set_var EASYRSA_CERT_EXPIRE    825</span><span style="color:#c0c5ce;">
+</span></pre>
 <p><strong>Страну:</strong></p>
 <pre style="background-color:#2b303b;">
 <span style="color:#c0c5ce;">set_var EASYRSA_REQ_COUNTRY    &quot;RU&quot;</span><span style="color:#c0c5ce;">
@@ -397,8 +399,7 @@ cp vars.example vars</span><span style="color:#c0c5ce;">
 <pre style="background-color:#2b303b;">
 <span style="color:#c0c5ce;">set_var EASYRSA_REQ_CITY       &quot;Moscow&quot;</span><span style="color:#c0c5ce;">
 </span></pre>
-<p><strong>Название организации:</strong>
-От имени которой мы будем выдавать сертификаты.</p>
+<p><strong>Название организации (От имени которой мы будем выдавать сертификаты):</strong></p>
 <pre style="background-color:#2b303b;">
 <span style="color:#c0c5ce;">set_var EASYRSA_REQ_ORG        &quot;DFOV&quot;</span><span style="color:#c0c5ce;">
 </span></pre>
@@ -550,7 +551,7 @@ $ firewall-cmd --reload</span><span style="color:#c0c5ce;">
 <pre style="background-color:#2b303b;">
 <span style="color:#c0c5ce;">$ systemctl start openvpn@server.service</span><span style="color:#c0c5ce;">
 </span></pre>
-<p>Если сервер запустился, то команда <code>status</code> покажет примерно такой вывод:</p>
+<p>Если сервер запустился, команда <code>status</code> покажет примерно такой вывод:</p>
 <pre style="background-color:#2b303b;">
 <span style="color:#c0c5ce;">$ systemctl status openvpn@server.service</span><span style="color:#c0c5ce;">
 </span><span style="color:#c0c5ce;">
@@ -561,8 +562,8 @@ openvpn@server.service - OpenVPN Robust And Highly Flexible Tunneling Applicatio
    Status: &quot;Initialization Sequence Completed&quot;</span><span style="color:#c0c5ce;">
    CGroup: /system.slice/system-openvpn.slice/openvpn@server.service</span><span style="color:#c0c5ce;">
            └─2824 /usr/sbin/openvpn --cd /etc/openvpn/ --config server.conf</span><span style="color:#c0c5ce;">
-</span></pre><h3 id="panel-upravleniia-dlia-openvpn-servera">Панель управления для OpenVPN сервера</h3>
-<p>Теперь вы можете <a href="../../installation/">установить Web-интерфейс</a> для управления сервером.</p>
+</span></pre><h3 id="panel-upravleniia-dlia-openvpn-servera">Панель управления для OpenVPN-сервера</h3>
+<p>Теперь вы можете <a href="../../installation/">установить web-интерфейс</a> для управления сервером.</p>
 
 
             </div>

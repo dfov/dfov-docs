@@ -14,12 +14,12 @@
     <link rel="canonical" href="https:&#x2F;&#x2F;docs.dfov.ru">
 
     
-<meta name="Description" content="Как установить приложение Dashboard for OpenVPN">
+<meta name="Description" content="Как установить приложение Dashboard для OpenVPN">
 
 
     
 
-<meta name="keywords" content="Документация к Dashboard for OpenVPN, Dashboard for OpenVPN, документация">
+<meta name="keywords" content="документация, Dashboard для OpenVPN">
 
 
 
@@ -28,7 +28,7 @@
     
 
     
-<meta property="og:description" content="Как установить приложение Dashboard for OpenVPN"/>
+<meta property="og:description" content="Как установить приложение Dashboard для OpenVPN"/>
 
 
     
@@ -130,7 +130,7 @@
                                         <li >
                                             <a href="https:&#x2F;&#x2F;docs.dfov.ru&#x2F;configuration&#x2F;web-config&#x2F;">
                                                 <strong>3.1.</strong>
-                                                Настройка через Web-интерфейс
+                                                Настройка через web-интерфейс
                                             </a>
                                         </li>
                                     
@@ -234,7 +234,7 @@
                                         <li >
                                             <a href="https:&#x2F;&#x2F;docs.dfov.ru&#x2F;openvpn&#x2F;install-openvpn-server-centos7&#x2F;">
                                                 <strong>5.2.</strong>
-                                                Установка и настройка OpenVPN сервера для CentOS 7
+                                                Установка и настройка OpenVPN-сервера для CentOS 7
                                             </a>
                                         </li>
                                     
@@ -275,17 +275,17 @@
             <div class="book-content">
                 
     <h1>Установка</h1>
-    <p>Перед установкой приложения у вас должен быть установлен OpenVPN-сервер. Руководства по установке OpenVPN-сервера 
+    <p>Перед установкой приложения у вас должен быть OpenVPN-сервер. Руководства по установке OpenVPN-сервера 
 для разных операционных систем:</p>
 <ol>
-<li><a href="/openvpn/install-openvpn-server-centos7">CentOS 7</a></li>
-<li><a href="https://www.digitalocean.com/community/tutorials/how-to-set-up-an-openvpn-server-on-ubuntu-18-04">Ubuntu 18.04</a> (на английском)</li>
+<li><a href="/openvpn/install-openvpn-server-centos7">CentOS 7</a>.</li>
+<li><a href="https://www.digitalocean.com/community/tutorials/how-to-set-up-an-openvpn-server-on-ubuntu-18-04">Ubuntu 18.04</a> (на английском).</li>
 </ol>
 <h3 id="tekhnicheskie-trebovaniia">Технические требования</h3>
 <ul>
 <li>Популярный дистрибутив Linux: CentOS, RHEL, Ubuntu, ArchLinux и т. п.</li>
-<li>Easy RSA 3.x (<a href="/openvpn/install-openvpn-server-centos7">как установить</a>)</li>
-<li>Java 8</li>
+<li>Easy RSA 3.x (<a href="/openvpn/install-openvpn-server-centos7">как установить</a>).</li>
+<li>Java 8.</li>
 </ul>
 <h3 id="1-ustanavlivaem-zavisimosti">1. Устанавливаем зависимости</h3>
 <p><strong>CentOS</strong></p>
@@ -305,8 +305,8 @@ apt install openjdk-8-jre</span><span style="color:#c0c5ce;">
 cp application.properties-dist application.properties</span><span style="color:#c0c5ce;">
 ln -s dfov-X.X.X dfov.jar</span><span style="color:#c0c5ce;">
 </span></pre>
-<p>Вместо <code>X.X.X</code> должна быть версия приложения которую вы устанавливаете.</p>
-<h3 id="4-nastraivaem-konfiguratsiiu-openvpn-servera">4. Настраиваем конфигурацию OpenVPN сервера</h3>
+<p>Вместо <code>X.X.X</code> должна быть версия приложения, которую вы устанавливаете.</p>
+<h3 id="4-nastraivaem-konfiguratsiiu-openvpn-servera">4. Настраиваем конфигурацию OpenVPN-сервера</h3>
 <p>Чтобы OpenVPN вёл реестр действующих и отозванных сертификатов, необходимо включить опцию <code>crl-verify</code>.
 Также потребуется активировать интерфейс управления.</p>
 <p>Добавляем в <code>/etc/openvpn/server.conf</code> строчки:</p>
@@ -320,7 +320,7 @@ management localhost 7501</span><span style="color:#c0c5ce;">
 <span style="color:#c0c5ce;">$ cd /etc/openvpn/easy-rsa</span><span style="color:#c0c5ce;">
 $ ./easyrsa gen-crl</span><span style="color:#c0c5ce;">
 </span></pre>
-<p>обновляем права:</p>
+<p>Обновляем права доступа:</p>
 <pre style="background-color:#2b303b;">
 <span style="color:#c0c5ce;">chown -R openvpn: /etc/openvpn</span><span style="color:#c0c5ce;">
 chmod o+r /etc/openvpn/easy-rsa/pki/crl.pem</span><span style="color:#c0c5ce;">
@@ -335,11 +335,12 @@ cp files/dfov.service /etc/systemd/system/</span><span style="color:#c0c5ce;">
 systemctl daemon-reload</span><span style="color:#c0c5ce;">
 systemctl enable dfov</span><span style="color:#c0c5ce;">
 </span></pre><h3 id="6-daiom-dopolnitel-nye-prava-pol-zovateliu-openvpn">6. Даём дополнительные права пользователю openvpn</h3>
-<p>Приложение работает от имени пользователя <code>openvpn</code>.
-Чтобы приложение могло управлять службой OpenVPN и читать информацию для проверки лицензии потребуется дать дополнительные права в системе.
-Последнее правило позволяет пользователю openvpn читать серийный номер материнской платы сервера, он необходим
+<p>Приложение работает от имени пользователя <code>openvpn</code>.</p>
+<p>Чтобы приложение могло управлять службой OpenVPN и читать информацию для проверки лицензии, 
+нужно дать дополнительные права в системе.
+Последнее правило позволит пользователю <code>openvpn</code> читать серийный номер материнской платы сервера — он необходим
 чтобы сгенерировать уникальный серверный ключ.</p>
-<p>Для этого запускаем <code>visudo</code> и добавляем строчки:</p>
+<p>Запускаем утилиту <code>visudo</code> и добавляем строчки:</p>
 <pre style="background-color:#2b303b;">
 <span style="color:#c0c5ce;">openvpn ALL=NOPASSWD: /usr/bin/systemctl start openvpn@server</span><span style="color:#c0c5ce;">
 openvpn ALL=NOPASSWD: /usr/bin/systemctl stop openvpn@server</span><span style="color:#c0c5ce;">
@@ -348,12 +349,12 @@ openvpn ALL=NOPASSWD: /usr/bin/cat /sys/devices/virtual/dmi/id/board_serial</spa
 </span></pre><h3 id="7-delaem-bazovuiu-nastroiku-application-properties">7. Делаем базовую настройку (application.properties)</h3>
 <p>В файле конфигурации <code>application.properties</code> указываем:</p>
 <ul>
-<li><code>superadmin.password</code> - пароль для пользователя <code>superadmin</code> для входа в приложение.</li>
-<li><code>management.endpoints.web.cors.allowed-origins=http://vpn.yourcompany.ru</code> - указываем адрес с которого разрешены 
+<li><code>superadmin.password</code> — пароль пользователя <code>superadmin</code> для входа в приложение.</li>
+<li><code>management.endpoints.web.cors.allowed-origins=http://vpn.yourcompany.ru</code> — указываем адрес, с которого разрешены 
 запросы к приложению. Например, <code>https://server</code>.</li>
 </ul>
 <p>Остальные настройки будут работать для большинства инсталляций. 
-Примеры настроек с комментариями хранятся в файле-примере - <code>application.properties-dist</code>, который поставляется в составе дистрибутива приложения.</p>
+Примеры настроек с комментариями хранятся в файле <code>application.properties-dist</code>, который поставляется в составе дистрибутива приложения.</p>
 <p><strong>Указываем путь к ключу для TLS (опционально)</strong></p>
 <p>Если вы используете TLS, то необходимо указать путь к ключу:</p>
 <pre style="background-color:#2b303b;">
@@ -367,8 +368,8 @@ systemctl start dfov</span><span style="color:#c0c5ce;">
 </span></pre>
 <p>Открываем в браузере адрес <code>https://адрес-сервера:8080</code> и входим под пользователем <code>superadmin</code>.</p>
 <h3 id="ustanovka-litsenzionnogo-kliucha-optsional-no">Установка лицензионного ключа (опционально)</h3>
-<p>Если у вас лицензионная версия, то для установки ключа необходимо зайти в Web-интерфейс приложения, страницу <code>Настройки</code>,
-вкладка <code>Разное</code>. </p>
+<p>Если у вас куплена лицензия, то для установки ключа необходимо зайти в web-интерфейс приложения, страницу <code>Настройки</code>,
+вкладку <code>Разное</code>.</p>
 
 
             </div>
